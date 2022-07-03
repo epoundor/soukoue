@@ -1,12 +1,14 @@
 <template>
-  <div class="flex min-w-screen min-h-screen bg-purple-200">
-    <!-- <div class="overflow-y-auto lg:w-5/12 w-full  bg-white">
-      <form action="" class="bg-white"></form>
-    </div> -->
-    <div class="lg:w-5/12 w-full flex justify-center items-center py-24">
-      <div class="bg-white rounded overflow-hidden w-10/12 aspect-[7/10]">
+  <div class="flex flex-wrap justify-between min-w-screen min-h-screen bg-purple-200">
+    <div class="overflow-y-auto xl:w-6/12 w-full  bg-white">
+      <form action="" class="bg-white px-10 py-20 flex justify-center items-center w-full">
+        <FormComponent/>
+      </form>
+    </div>
+    <div class="xl:w-6/12 w-full flex justify-center items-center py-20 px-10 xl:px-0">
+      <div class="bg-white rounded overflow-scroll w-10/12 aspect-[7/10]">
         <div class="h-10 bg-orange-500"></div>
-        <div class="main px-6">
+        <div class="main px-6 w-full">
           <div class="flex flex-col gap-6">
             <h1 class="text-5xl font-bold mt-10">Facture</h1>
             <span class="bg-orange-500 w-48 h-2 flex"></span>
@@ -49,6 +51,7 @@
 <style src="./App.css"></style>
 <script>
 import InvoiceComponent from "@/components/InvoiceComponent.vue";
+import FormComponent from "@/components/FormComponent.vue";
 
 export default {
   data() {
@@ -71,6 +74,7 @@ export default {
   },
   components: {
     InvoiceComponent,
+    FormComponent,
   },
 };
 </script>
