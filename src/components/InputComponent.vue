@@ -106,13 +106,13 @@
 
       <input v-model="value" @change="isValidated" :id="name" :name="name" :type="type"
       autocomplete
-      :placeholder="'eg:' + placeholder ?? name" 
+      :placeholder="'eg: ' + placeholder ?? name" 
       class="px-4 py-2 border rounded
       border-fi-middle-gray placeholder-fi-middle-gray focus:outline-none
       focus:ring-1 focus:border-fi-indigo focus:ring-indigo-500"
       :required="required" />
     </div>
-    <p class="text-xs font-semibold text-red-500" v-show="!valid">Ce champ est requis</p>
+    <p class="text-xs font-semibold text-red-500" v-show="!valid">Ce champ est requis ou invallide</p>
   </div>
 </template>
 
@@ -134,8 +134,16 @@ export default {
     isValidated() {
       if (this.required && this.value == "" || this.value == null) {
         this.valid = !this.valid;
-        console.log(this.valid);
         return
+      }
+      else if(this.type=='email') {
+        var re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return this.valid = re.test(this.value);
+      }
+       else if(this.type=='tel') {
+        var re = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/;
+        this.$emit("error",true);
+        return this.valid = re.test(this.value);
       }
         this.valid = true;
     },
