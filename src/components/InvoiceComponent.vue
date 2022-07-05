@@ -7,7 +7,7 @@
       <span class="text-right">TVA</span>
       <span class="text-right">Total</span>
     </div>
-    <ItemComponent v-for="(item,i) of this.items" :item=item :key="i"/>
+    <ItemComponent v-for="(item,i) in items" :item=item :key="i"/>
   </div>
 </template>
 
@@ -16,11 +16,12 @@ import ItemComponent from "@/components/ItemComponent.vue";
 export default {
   name: "InvoiceComponent",
   props: {
-      items: Object,
+    items: Object,
   },
   components: {
     ItemComponent,
   },
+  methods: {}
 };
 </script>
 

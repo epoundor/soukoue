@@ -106,6 +106,7 @@
 
       <input v-model="value" @change="isValidated" :id="name" :name="name" :type="type"
       autocomplete
+      :value="getUserDataValue"
       :placeholder="'eg: ' + placeholder ?? name" 
       class="px-4 py-2 border rounded
       border-fi-middle-gray placeholder-fi-middle-gray focus:outline-none
@@ -118,6 +119,8 @@
 
 <script>
 import { computed, ref } from "vue";
+import { mapGetters } from "vuex";
+import store from '@/store';
 export default {
   props: {
     name: String,
@@ -131,6 +134,9 @@ export default {
     },
   },
   computed: {
+    ...mapGetters([
+         'getUserData'
+  ]),
     isValidated() {
       if (this.required && this.value == "" || this.value == null) {
         this.valid = !this.valid;
@@ -147,6 +153,18 @@ export default {
       }
         this.valid = true;
     },
+    getUserDataValue() {
+      return store.getters.getUserData(this.name);
+    }
+  },
+  created(){
+    this.value = this.getUserDataValue()== 0?"":this.getUserDataValue();
+  },
+  watch:{
+    value(value) {
+      let el_name=this.name;
+      store.commit('UPDATE_USER',{el_name,value,});
+    }
   },
   data() {
     return {

@@ -5,7 +5,7 @@
       class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 my-4"
     >
       <input-component
-        name="brandname"
+        name="brand_name"
         placeholder="Mister Juicy"
         type="text"
         :required="true"
@@ -25,7 +25,7 @@
       class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-6 my-4"
     >
       <input-component
-        name="name"
+        name="u_name"
         placeholder="Doe"
         type="text"
         :required="true"
@@ -33,9 +33,9 @@
         label="Nom de famille"
       ></input-component>
       <input-component
-        name="surname"
+        name="u_surname"
         placeholder="John"
-        type="email"
+        type="text"
         :required="true"
         description=""
         label="Prénoms"
@@ -69,8 +69,8 @@
         placeholder="(+229) 61789141"
         type="tel"
         :required="true"
-        description="Code postal du siège de votre entreprise"
-        label="Code postal"
+        description="Le numéro de téléphone professionnelle de votre entreprise"
+        label="Téléphone"
       ></input-component>
       <input-component
         name="rccm"
@@ -93,7 +93,7 @@
         label="IFU"
       ></input-component>
       <input-component
-        name="IBAN"
+        name="iban"
         placeholder="RB/AAA/XX A XXXXX"
         type="tel"
         :required="true"
